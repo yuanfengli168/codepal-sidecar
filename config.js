@@ -11,13 +11,14 @@
 // If you ever want to switch to your own Firebase project, replace
 // these six fields and update Authorized Domains accordingly.
 
-export const FIREBASE_CONFIG = {
-  apiKey:            "AIzaSyAftuF-eDxWOdIBrHvFE50Qt8X7F9XvLFQ",
-  authDomain:        "ai-idea-generator-d9e15.firebaseapp.com",
-  projectId:         "ai-idea-generator-d9e15",
-  storageBucket:     "ai-idea-generator-d9e15.firebasestorage.app",
+export const firebaseConfig = {
+  apiKey: "AIzaSyAftuF-eDxWOdIBrHvFE50Qt8X7F9XvLFQ",
+  authDomain: "ai-idea-generator-d9e15.firebaseapp.com",
+  projectId: "ai-idea-generator-d9e15",
+  storageBucket: "ai-idea-generator-d9e15.firebasestorage.app",
   messagingSenderId: "997919258193",
-  appId:             "1:997919258193:web:8c1ad1f323a82b683faa70",
+  appId: "1:997919258193:web:8c1ad1f323a82b683faa70",
+  measurementId: "G-8JRCF2825J"
 };
 
 // Where AuthKit's static assets are hosted. Used as the import root
