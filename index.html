@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CodePal Sidecar</title>
+  <meta name="description" content="Local-first companion page for the CodePal server." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">⌬</span>
+      <span class="brand-name">CodePal Sidecar</span>
+    </div>
+
+    <div class="topbar-status">
+      <span id="conn-dot" class="dot dot-unknown" title="Connection status"></span>
+      <span id="conn-label" class="conn-label">checking…</span>
+    </div>
+
+    <div class="counter" id="counter" aria-label="Savings counter">
+      <span><b id="c-local">0</b> local</span>
+      <span class="sep">·</span>
+      <span><b id="c-forwarded">0</b> forwarded</span>
+      <span class="sep">·</span>
+      <span>~<b id="c-tokens">0</b> tokens saved</span>
+    </div>
+
+    <div class="topbar-auth">
+      <button id="settings-btn" class="btn btn-ghost" title="Settings">⚙</button>
+      <button id="auth-btn" class="btn btn-pill">Sign in</button>
+    </div>
+  </header>
+
+  <!-- AuthKit anchor (modal mode — kept hidden until showLogin() is called). -->
+  <div id="auth-anchor"></div>
+
+  <main class="main">
+    <!-- Settings drawer -->
+    <section id="settings" class="settings hidden" aria-label="Settings">
+      <div class="settings-row">
+        <label for="port-input">CodePal port</label>
+        <input id="port-input" type="number" min="1" max="65535" value="8742" />
+        <button id="port-save" class="btn">Save port</button>
+        <span id="port-status" class="muted small"></span>
+      </div>
+      <div class="settings-row">
+        <label for="project-input">Project (local path or repo URL)</label>
+        <input id="project-input" type="text" placeholder="/Users/you/code/myrepo  or  https://github.com/org/repo" />
+      </div>
+      <div class="settings-row">
+        <button id="counter-reset" class="btn btn-ghost">Reset counter</button>
+        <span id="account-anchor"></span>
+      </div>
+    </section>
+
+    <!-- Connection error banner -->
+    <div id="error-banner" class="banner hidden"></div>
+
+    <!-- Query box -->
+    <section class="query-section">
+      <textarea id="query-input" rows="6"
+                placeholder="Ask CodePal about your repo…  (Cmd/Ctrl+Enter to submit)"></textarea>
+      <div class="query-actions">
+        <span class="hint muted small">tier C disabled — local answers only</span>
+        <button id="ask-btn" class="btn btn-primary">Ask CodePal</button>
+      </div>
+    </section>
+
+    <!-- Answer card -->
+    <section id="answer-card" class="answer hidden" aria-live="polite">
+      <div class="answer-head">
+        <span id="tier-badge" class="badge">…</span>
+        <button id="dismiss-btn" class="btn btn-ghost btn-sm" title="Dismiss">✕</button>
+      </div>
+      <div id="answer-body" class="answer-body"></div>
+
+      <details id="chunks-wrap" class="chunks">
+        <summary>Retrieved chunks (<span id="chunks-count">0</span>)</summary>
+        <ol id="chunks-list" class="chunks-list"></ol>
+      </details>
+
+      <div class="answer-actions">
+        <button id="copy-btn" class="btn">Copy slimmed prompt</button>
+        <button id="up-btn" class="btn btn-ghost" title="Good answer">👍</button>
+        <button id="down-btn" class="btn btn-ghost" title="Bad answer">👎</button>
+        <button id="bug-btn" class="btn btn-ghost hidden" title="Save as bug solution">Save as bug</button>
+      </div>
+
+      <div id="feedback-note" class="feedback-note hidden">
+        <textarea id="note-input" rows="2" placeholder="Optional note for this rating…"></textarea>
+        <button id="note-send" class="btn btn-sm">Send feedback</button>
+        <span id="feedback-status" class="muted small"></span>
+      </div>
+    </section>
+
+    <!-- History -->
+    <section class="history">
+      <h3>Recent queries</h3>
+      <ol id="history-list" class="history-list"></ol>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

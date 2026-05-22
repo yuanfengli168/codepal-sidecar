@@ -8,3 +8,19 @@
 # Node (in case we add tooling later)
 node_modules/
 npm-debug.log*
+
+# Secrets / credentials — should never be in a public repo.
+# (We don't currently use any of these, but guard against accidents.)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials.json
+serviceAccount*.json
+firebase-adminsdk-*.json
+.firebaserc
+*.private.*

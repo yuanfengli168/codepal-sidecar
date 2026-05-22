@@ -37,7 +37,8 @@ do carry ~3 KB of relevant context instead of pasting whole files.
 
 - A running CodePal server on `http://localhost:<port>` (default `8742`)
   with CORS enabled — see CodePal's [CORS setup docs](https://github.com/yuanfengli168/codepal/blob/main/docs/copilot-sidecar-page-design.md).
-- **Chrome / Edge / Firefox** (Safari may block HTTPS→HTTP-localhost requests).
+- **Chrome** (Edge / Firefox likely work but are unsupported in v0;
+  Safari is known to block HTTPS→HTTP-localhost requests).
 - A Google account (for sign-in via [AuthKit](https://github.com/yuanfengli168/authkit)).
 
 ---
