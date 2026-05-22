@@ -11,7 +11,7 @@
 // If you ever want to switch to your own Firebase project, replace
 // these six fields and update Authorized Domains accordingly.
 
-export const firebaseConfig = {
+export const FIREBASE_CONFIG = {
   apiKey: "AIzaSyAftuF-eDxWOdIBrHvFE50Qt8X7F9XvLFQ",
   authDomain: "ai-idea-generator-d9e15.firebaseapp.com",
   projectId: "ai-idea-generator-d9e15",
