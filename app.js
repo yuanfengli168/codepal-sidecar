@@ -48,6 +48,8 @@ const els = {
   portSave: $("port-save"),
   portStatus: $("port-status"),
   projectInput: $("project-input"),
+  projectSave: $("project-save"),
+  projectStatus: $("project-status"),
   counterReset: $("counter-reset"),
   accountAnchor: $("account-anchor"),
   errorBanner: $("error-banner"),
@@ -547,7 +549,12 @@ function toggleSettings() {
 function bindEvents() {
   els.settingsBtn.addEventListener("click", toggleSettings);
   els.portSave.addEventListener("click", savePort);
-  els.projectInput.addEventListener("input", () => lsSet(LS.project, els.projectInput.value));
+  els.projectSave.addEventListener("click", () => {
+    const val = els.projectInput.value.trim();
+    lsSet(LS.project, val);
+    els.projectStatus.textContent = "saved ✓";
+    setTimeout(() => (els.projectStatus.textContent = ""), 2000);
+  });
   els.counterReset.addEventListener("click", () => {
     if (confirm("Reset counter to zero?")) resetCounter();
   });
