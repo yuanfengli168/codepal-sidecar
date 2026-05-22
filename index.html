@@ -37,20 +37,23 @@
   <!-- AuthKit anchor (modal mode — kept hidden until showLogin() is called). -->
   <div id="auth-anchor"></div>
 
+
   <main class="main">
-    <!-- Settings drawer -->
+    <!-- Project path input (always visible) -->
+    <section class="project-path-row">
+      <label for="project-input">Project (local path or repo URL):</label>
+      <input id="project-input" type="text" placeholder="/Users/you/code/myrepo  or  https://github.com/org/repo" />
+      <button id="project-save" class="btn">Save project</button>
+      <span id="project-status" class="muted small"></span>
+    </section>
+
+    <!-- Settings drawer (still present, but without project input) -->
     <section id="settings" class="settings hidden" aria-label="Settings">
       <div class="settings-row">
         <label for="port-input">CodePal port</label>
         <input id="port-input" type="number" min="1" max="65535" value="8742" />
         <button id="port-save" class="btn">Save port</button>
         <span id="port-status" class="muted small"></span>
-      </div>
-      <div class="settings-row">
-        <label for="project-input">Project (local path or repo URL)</label>
-        <input id="project-input" type="text" placeholder="/Users/you/code/myrepo  or  https://github.com/org/repo" />
-        <button id="project-save" class="btn">Save project</button>
-        <span id="project-status" class="muted small"></span>
       </div>
       <div class="settings-row">
         <button id="counter-reset" class="btn btn-ghost">Reset counter</button>
